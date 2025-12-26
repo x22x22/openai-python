@@ -149,5 +149,7 @@ def test_documentation_urls_valid():
 
     for tool_type, info in all_tools.items():
         doc_url = info["documentation_url"]
+        # Validate URL structure - not user input sanitization
         assert doc_url.startswith("https://"), f"Tool '{tool_type}' has invalid documentation URL"
-        assert "platform.openai.com" in doc_url, f"Tool '{tool_type}' documentation URL is not from OpenAI"
+        # Verify the URL is from the official OpenAI platform domain (not user-controlled)
+        assert doc_url.startswith("https://platform.openai.com"), f"Tool '{tool_type}' documentation URL is not from OpenAI"
