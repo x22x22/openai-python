@@ -82,12 +82,21 @@ __all__ = [
     "DefaultHttpxClient",
     "DefaultAsyncHttpxClient",
     "DefaultAioHttpClient",
+    "get_available_tool_types",
+    "get_tool_info",
+    "get_all_tools_info",
 ]
 
 if not _t.TYPE_CHECKING:
     from ._utils._resources_proxy import resources as resources
 
-from .lib import azure as _azure, pydantic_function_tool as pydantic_function_tool
+from .lib import (
+    azure as _azure,
+    get_tool_info as get_tool_info,
+    get_all_tools_info as get_all_tools_info,
+    pydantic_function_tool as pydantic_function_tool,
+    get_available_tool_types as get_available_tool_types,
+)
 from .version import VERSION as VERSION
 from .lib.azure import AzureOpenAI as AzureOpenAI, AsyncAzureOpenAI as AsyncAzureOpenAI
 from .lib._old_api import *
