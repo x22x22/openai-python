@@ -128,9 +128,11 @@ def test_tool_info_structure():
         assert isinstance(info["documentation_url"], str)
         assert isinstance(info["required_params"], list)
         assert isinstance(info["optional_params"], list)
-
-        # All tools should have 'type' as a required parameter
+        
+        # All tools must have at least 'type' as a required parameter
+        # (some may have additional required parameters)
         assert "type" in info["required_params"], f"Tool '{tool_type}' missing 'type' in required_params"
+        assert len(info["required_params"]) > 0, f"Tool '{tool_type}' has no required parameters"
 
 
 def test_tool_types_match():
